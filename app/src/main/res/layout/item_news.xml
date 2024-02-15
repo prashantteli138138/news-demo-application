@@ -1,0 +1,57 @@
+<!-- item_news.xml -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="news"
+            type="com.sigma.india.newsdemoapplicationpt0.data.model.NewsModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- Title TextView -->
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@{news.title}"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Published Date TextView -->
+            <TextView
+                android:id="@+id/publishedAtTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@{news.getPublishedAtFormattedString()}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+
+            <!-- News Image -->
+            <ImageView
+                android:id="@+id/newsImageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:adjustViewBounds="true"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:src="@{news.urlToImage}"
+                android:visibility="@{news.urlToImage != null ? View.VISIBLE : View.GONE}" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
